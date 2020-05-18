@@ -39,8 +39,14 @@ class Block {
 
   display() {
     if (this.size === 50) {
+      textSize(18);
+      fill(255);
+      text(this.mass + " kg", max(this.x, this.constraint), this.y - 10);
       image(panda, max(this.x, this.constraint), this.y, this.size, this.size);
     } else {
+      textSize(18);
+      fill(255);
+      text('100^' + Math.log10(this.mass) / 2 + " kg", max(this.x, this.constraint), this.y - 10);
       image(bear, max(this.x, this.constraint), this.y, this.size, this.size);
     }
   }
