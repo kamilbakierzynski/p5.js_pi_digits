@@ -9,7 +9,7 @@ let counter = 0;
 let collision = false;
 let slider;
 
-const timeSkip = pow(10, 4);
+const timeSkip = 10 ** 4;
 
 function setup() {
   createCanvas(windowWidth, 400);
