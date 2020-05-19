@@ -9,46 +9,45 @@ class Block {
     this.constraint = constraint;
     this.collision = false;
   }
+}
 
-  move() {
-    this.x = this.x - this.velocity;
-    if (this.x <= 0 && !this.collision) {
-      this.x = 0;
-      this.counter = this.counter + 1;
-      this.velocity = -(this.velocity);
-      return true;
-      // clack.play();
-    }
+Block.prototype.move = function() {
+  this.x = this.x - this.velocity;
+  if (this.x <= 0 && !this.collision) {
+    this.x = 0;
+    this.counter = this.counter + 1;
+    this.velocity = -(this.velocity);
+    return true;
+    // clack.play();
+  }
+  return false;
+}
+
+Block.prototype.checkForBounce = function(block) {
+  if (this.x <= block.x + block.size) {
+    newVelocity(block, this);
+    block.x = this.x - block.size - 1;
+    this.counter = this.counter + 1;
+    this.collision = true;
+    return true;
+    // clack.play();
+  } else {
+    this.collision = false;
     return false;
   }
+}
 
-  checkForBounce(block) {
-    if (this.x <= block.x + block.size) {
-      newVelocity(block, this);
-      block.x = this.x - block.size - 1;
-      this.counter = this.counter + 1;
-      this.collision = true;
-      return true;
-      // clack.play();
-    } else {
-      this.collision = false;
-      return false;
-    }
-  }
-  
-
-  display() {
-    if (this.size === 50) {
-      textSize(18);
-      fill(255);
-      text(this.mass + " kg", max(this.x, this.constraint), this.y - 10);
-      image(panda, max(this.x, this.constraint), this.y, this.size, this.size);
-    } else {
-      textSize(18);
-      fill(255);
-      text('100^' + Math.log10(this.mass) / 2 + " kg", max(this.x, this.constraint), this.y - 10);
-      image(bear, max(this.x, this.constraint), this.y, this.size, this.size);
-    }
+Block.prototype.display = function () {
+  if (this.size === 50) {
+    textSize(18);
+    fill(255);
+    text(this.mass + " kg", max(this.x, this.constraint), this.y - 10);
+    image(panda, max(this.x, this.constraint), this.y, this.size, this.size);
+  } else {
+    textSize(18);
+    fill(255);
+    text('100^' + Math.log10(this.mass) / 2 + " kg", max(this.x, this.constraint), this.y - 10);
+    image(bear, max(this.x, this.constraint), this.y, this.size, this.size);
   }
 }
 
