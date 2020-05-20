@@ -1,7 +1,7 @@
 # Calculate π digits by colliding two blocks.
 
 >Play here:
->https://kamilbakierzynski.github.io/p5.js_pi_digits_from_bounce/
+>https://kamilbakierzynski.github.io/p5.js_pi_digits/
 
 Small simulation made with [p5.js](https://p5js.org/).
 There are two blocks - one with a mass of 1kg and the other with `100^n`kg where `n` is the number of `π` digits you want to compute.
